@@ -1,0 +1,62 @@
+#welcome{
+    text-align: center;
+    height: 200px;
+    width: 380px;
+    margin-left: 33%;
+    margin-top: 10%;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.btn-one{
+    float: left;
+    margin: 20px 0px 0px 100px;
+}
+
+.btn-two{
+    float: right;
+    margin: 20px 100px 0px 0px;
+}
+
+#loginForm {
+    text-align: center;
+}
+
+#loginForm input[type=text] {
+    width: 100%;
+}
+
+#loginForm .btn-success {
+    margin-top: 15px;
+}
+
+#loginForm .control-group {
+    width: 275px;
+    margin: 0px 0px 0px 10px;
+}
+
+#loginForm label {
+    float: left
+}
+
+#RegisterForm {
+    text-align: center;
+}
+
+#RegisterForm input[type=text] {
+    width: 100%;
+}
+
+#RegisterForm .btn-success {
+    margin-top: 15px;
+}
+
+#RegisterForm .control-group {
+    width: 275px;
+    margin: 0px 0px 0px 10px;
+}
+
+#RegisterForm label {
+    float: left
+}
+

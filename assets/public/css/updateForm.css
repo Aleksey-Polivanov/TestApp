@@ -1,0 +1,46 @@
+#updateForm input[type=text] {
+    width: 100%;
+}
+
+#updateForm .btn-success {
+    margin-top: 15px;
+}
+
+#updateForm .control-group {
+    width: 275px;
+    margin: 0px 0px 0px 10px;
+}
+
+#updateUserForm input[type=text] {
+    width: 100%;
+}
+
+#updateUserForm .btn-success {
+    margin-top: 15px;
+}
+
+#updateUserForm .control-group {
+    width: 275px;
+    margin: 0px 0px 0px 10px;
+}
+
+#updateForm label {
+    float: left
+}
+
+#createForm input[type=text] {
+    width: 100%;
+}
+
+#createForm .btn-success {
+    margin-top: 15px;
+}
+
+#createForm .control-group {
+    width: 275px;
+    margin: 0px 0px 0px 10px;
+}
+
+#createForm label {
+    float: left
+}

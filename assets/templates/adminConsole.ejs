@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="/css/adminConsole.css">
+    <link rel="stylesheet" href="/css/updateForm.css">
+    <link rel="stylesheet" href="/css/modal.css">
+    <script src="/js/plugins/jquery.min.js"></script>
+    <script src="/js/plugins/jquery.maskedinput.min.js"></script>
+    // <script src="/js/test.js"></script>
+    <script src="/js/plugins/bootstrap.min.js"></script>
+    <script src="/js/scripts.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Users</h3>
+                    <div class="pull-right">
+							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+								<i class="glyphicon glyphicon-filter"></i>
+							</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Users" />
+                </div>
+                <table class="table table-hover" id="dev-table">
+                    <thead>
+                    <tr>
+                        <th></th>
+    <th></th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Books</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% users.forEach(function(user) { %>
+                    <tr>
+                        <td>
+                            <form action="/delUser?id=<%= user._id %>" method="POST">
+                                <button class="btn btn-success">Del</button>
+                            </form>
+                        </td>
+
+                        <td>
+                            <a href="#UpdateUser_<%= user.login %>" class="btn btn-success">Upd</a>
+                        </td>
+                        <td><%= user.name %></td>
+                        <td><%= user.phone %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.books.length %></td>
+                    </tr>
+                    <% }); %>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <form action="/delUsers"  method="POST">
+                                <button class="btn btn-success">ALL DELETE</button>
+                            </form>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Books</h3>
+                    <div class="pull-right">
+							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+								<i class="glyphicon glyphicon-filter"></i>
+							</span>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <input type="text" class="form-control" id="task-table-filter" data-action="filter" data-filters="#task-table" placeholder="Filter Books" />
+                </div>
+                <table class="table table-hover" id="task-table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Author</th>
+                        <th>Name</th>
+                        <th>UserName</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% books.forEach(function(book){ %>
+                        <tr>
+                            <td>#
+                                <!--<form action="/takeBook?id=<%= book._id %>"  method="POST">-->
+                                    <!--<button class="btn btn-success">Take</button>-->
+                                <!--</form>-->
+                            </td>
+                            <td><%= book.author %></td>
+                            <td><%= book.name %></td>
+                            <td><%= book.userName %></td>
+                            <td>
+                                <form action="/delBook?id=<%= book._id %>"  method="POST">
+                                    <button class="btn btn-success">Del</button>
+                                </form>
+                            </td>
+                            <td>
+                                <a href="#UpdateBook_<%= book.name %>" class="btn btn-success">Upd</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <a href="#CreateBook" class="btn btn-success">Add Book</a>
+                        </td>
+                        <td>
+                            <form action="/delBooks"  method="POST">
+                                <button class="btn btn-success">All Delete</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/logout"  method="POST">
+                                <button class="btn btn-success">Logout</button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="CreateBook" class="modalDialog">
+    <div>
+        <a href="#close" title="Close" class="close">X</a>
+        <h3>Create</h3>
+
+        <div id="createForm">
+            <form class="form-horizontal" action='/book' method="POST">
+                <fieldset>
+
+                    <div class="control-group">
+                        <!-- Author -->
+                        <label class="control-label" for="author1">Author</label>
+                        <div class="controls">
+                            <input type="text" id="author1" name="author" placeholder="Enter Author" class="input-xlarge"/><br/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- name-->
+                        <label class="control-label" for="name1">Name</label>
+                        <div class="controls">
+                            <input type="text" id="name1" name="name" placeholder="Enter name" class="input-xlarge"><br/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Button -->
+                        <div class="controls">
+                            <button class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<% books.forEach(function(book){ %>
+
+<div id="UpdateBook_<%= book.name %>" class="modalDialog">
+    <div>
+        <a href="#close" title="Close" class="close">X</a>
+        <h3>Update</h3>
+
+        <div id="updateForm">
+            <form class="form-horizontal" action='/updateBook?id=<%= book._id %>' method="POST">
+                <fieldset>
+                    <div class="control-group">
+                        <!-- Author -->
+                        <label class="control-label" for="author">Author</label>
+                        <div class="controls">
+                            <input type="text" id="author" value="<%= book.author %>" name="author" placeholder="Enter Author" class="input-xlarge"/><br/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- name-->
+                        <label class="control-label" for="name">Name</label>
+                        <div class="controls">
+                            <input type="text" id="name" value="<%= book.name %>" name="name" placeholder="Enter name" class="input-xlarge"><br/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Button -->
+                        <div class="controls">
+                            <button class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<% }); %>
+
+
+<% users.forEach(function(user){ %>
+
+<div id="UpdateUser_<%= user.login %>" class="modalDialog">
+    <div>
+        <a href="#close" title="Close" class="close">X</a>
+        <h3>Update</h3>
+
+        <div id="updateUserForm">
+            <form class="form-horizontal" action='/updateUser?id=<%= user._id %>' method="POST">
+                <fieldset>
+                    <div class="control-group">
+                        <!-- Login -->
+                        <label class="control-label" for="login">Author</label>
+                        <div class="controls">
+                            <input type="text" id="login" value="<%= user.login %>" name="login" placeholder="Enter Login" class="input-xlarge" disabled/><br/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Email -->
+                        <label class="control-label" for="name">Email</label>
+                        <div class="controls">
+                            <input type="text" id="email" value="<%= user.email %>" name="email" placeholder="Enter email" class="input-xlarge"><br/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Phone -->
+                        <label class="control-label" for="phone">Phone</label>
+                        <div class="controls">
+                            <input type="text" id="phone" value="<%= user.phone %>" name="phone" placeholder="Enter phone" class="input-xlarge"><br/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <!-- Name -->
+                        <label class="control-label" for="nameU">Name</label>
+                        <div class="controls">
+                            <input type="text" id="nameU" value="<%= user.name %>" name="phone" placeholder="Enter name" class="input-xlarge" disabled><br/>
+                        </div>
+                    </div>
+
+
+                    <div class="control-group">
+                        <!-- Button -->
+                        <div class="controls">
+                            <button class="btn btn-success">Submit</button>
+                        </div>
+
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<% }); %>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

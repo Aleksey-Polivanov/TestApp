@@ -1,0 +1,71 @@
+{
+  "port": 3000,
+
+  "security": {
+    "secret": "MySuperSecret",
+    "tokenLife" : 600
+  },
+
+  "mongoose": {
+    "uri": "mongodb://localhost/mongoTester"
+  },
+
+  "default": {
+    "admin": {
+      "login": "admin@test.com",
+      "password": "qwerty",
+      "email": "admin@test.com",
+      "phone": "+38 (066) 000-00-00",
+      "role": "Admin",
+      "name": "Admin"
+    },
+    "user1": {
+      "login": "test1@test.com",
+      "password": "qwerty1",
+      "email": "test1@test.com",
+      "phone": "+38 (066) 111-11-11",
+      "name": "tester 1"
+    },
+    "user2": {
+      "login": "test2@test.com",
+      "password": "qwerty2",
+      "email": "test2@test.com",
+      "phone": "+38 (062) 222-22-22",
+      "name": "tester 2"
+    },
+    "user3": {
+      "login": "test3@test.com",
+      "password": "qwerty3",
+      "email": "test3@test.com",
+      "phone": "+38 (062) 333-33-33",
+      "name": "tester 3"
+    },
+    "user4": {
+      "login": "test4@test.com",
+      "password": "qwerty4",
+      "email": "test4@test.com",
+      "phone": "+38 (062) 444-44-44",
+      "name": "tester 4"
+    },
+    "book1": {
+      "author": "Author1",
+      "name": "book1"
+    },
+    "book2":{
+      "author": "Author2",
+      "name": "book2"
+    },
+    "book3":{
+      "author": "Author3",
+      "name": "book3"
+    },
+    "book4": {
+      "author": "Author4",
+      "name": "book4"
+    },
+    "book5":{
+      "author": "Author5",
+      "name": "book5"
+    }
+  }
+}
