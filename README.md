@@ -24,3 +24,8 @@ npm start
 ```
 
 run localhost:3000
+
+```
+Login: admin@test.com
+pass: qwerty
+```
