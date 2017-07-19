@@ -66,6 +66,31 @@ router.post('/updateUser', (req, res) => {
     });
 });
 
+
+router.post('/delUser', (req, res) => {
+
+    User.findById(req.query.id, (err, user) => {
+
+        if(!user) {
+            res.statusCode = 404;
+            return res.send({ error: 'Not found' });
+        }
+
+        return user.remove((err) => {
+            if(err) {
+                console.log(err);
+                res.statusCode = 500;
+                res.send('Server Error')
+            } else {
+                console.log('User updated');
+                res.statusCode = 200;
+                res.redirect('/updateUser');
+            }
+        });
+    });
+});
+
+
 router.post('/takeBook', (req, res) => {
 
     UserService.changeBook(req.query.id, req.auth.user)
